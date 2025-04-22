@@ -1,0 +1,78 @@
+.majestic-cup {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-sizing: border-box;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      z-index: -2; 
+    }
+      &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/public/bg5.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+  
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+    .title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  
+    .media-section {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+  
+      .media-box {
+        width: 25%;
+        border: 2px solid #333;
+        border-radius: 10px;
+        overflow: hidden;
+  
+        img {
+          width: 100%;
+          display: block;
+        }
+      }
+    }
+  
+    .description {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  
+    .team-data {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 1rem;
+    }
+  
