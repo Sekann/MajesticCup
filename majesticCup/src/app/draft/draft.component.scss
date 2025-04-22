@@ -1,0 +1,41 @@
+.equipo-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 1px 1px #000;
+}
+
+.hero-frame,
+.selector-frame {
+  width: 80px;
+  height: 120px;
+  border: 2px dashed #ccc;
+  background-color: #f8f9fa;
+  margin: 5px;
+  border-radius: 8px;
+}
+
+.ruleta {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.ruleta-verde {
+  background-color: #28a745;
+  color: white;
+}
+
+.ruleta-roja {
+  background-color: #dc3545;
+  color: white;
+}
+
+.comodin-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffa500;
+  text-shadow: 1px 1px #000;
+}
