@@ -1,12 +1,19 @@
-.equipo-title {
-  font-size: 2rem;
+.team-title {
+  font-size: 4rem;
   font-weight: bold;
   color: #ffd700;
-  text-shadow: 1px 1px #000;
+  text-shadow: 3px 3px #000;
 }
 
-.hero-frame,
-.selector-frame {
+.tournament-title {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 3px 3px #000;
+}
+
+.hero-slot,
+.selection-slot {
   width: 80px;
   height: 120px;
   border: 2px dashed #ccc;
@@ -15,7 +22,7 @@
   border-radius: 8px;
 }
 
-.ruleta {
+.wheel {
   padding: 10px 20px;
   border-radius: 10px;
   font-weight: bold;
@@ -23,19 +30,36 @@
   font-size: 0.9rem;
 }
 
-.ruleta-verde {
+.wheel-green {
   background-color: #28a745;
   color: white;
 }
 
-.ruleta-roja {
+.wheel-red {
   background-color: #dc3545;
   color: white;
 }
 
-.comodin-title {
+.wildcard-title {
   font-size: 2.5rem;
   font-weight: bold;
   color: #ffa500;
   text-shadow: 1px 1px #000;
+}
+
+.mandaos-box {
+  background: #ff69b4;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.mandaos-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.mandaos-icon {
+  font-size: 2rem;
 }

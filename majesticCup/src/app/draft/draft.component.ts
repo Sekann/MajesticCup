@@ -10,7 +10,7 @@ import {NgForOf} from '@angular/common';
   styleUrl: './draft.component.scss'
 })
 export class DraftComponent {
-  equipo1 = new Array(5);
-  equipo2 = new Array(5);
+  team1 = new Array(5);
+  team2 = new Array(5);
 
 }
