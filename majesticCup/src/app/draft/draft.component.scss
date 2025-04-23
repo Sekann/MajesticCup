@@ -16,15 +16,17 @@
 
 
 .team-title {
-  font-size: 4rem;
-  font-weight: bold;
+  font-family: 'League Gothic', serif;
+  font-size: 6rem;
+  font-weight: 400;
   color: #ffd700;
   text-shadow: 3px 3px #000;
 }
 
 .tournament-title {
+  margin-top: 20px;
   font-size: 3rem;
-  font-weight: bold;
+  font-weight: bolder;
   color: #ffd700;
   text-shadow: 3px 3px #000;
 }
@@ -58,9 +60,10 @@
 }
 
 .wildcard-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #ffa500;
+  font-family: 'League Gothic', serif;
+  font-size: 6rem;
+  font-weight: 400;
+  color: #ffd700;
   text-shadow: 1px 1px #000;
 }
 
