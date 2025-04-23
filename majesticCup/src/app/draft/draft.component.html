@@ -1,44 +1,73 @@
-<div class="container text-center my-5">
+<div class="main-div text-center">
   <div class="row mb-4">
     <div class="col">
-      <h2 class="equipo-title">EQUIPO 1</h2>
+      <h2 class="team-title">TEAM 1</h2>
     </div>
     <div class="col">
-      <h2 class="equipo-title">EQUIPO 2</h2>
+      <h1 class="tournament-title">MAJESTIC CUP</h1>
+    </div>
+    <div class="col">
+      <h2 class="team-title">TEAM 2</h2>
     </div>
   </div>
 
-  <div class="row mb-3">
-    <div class="col d-flex justify-content-around">
-      <div class="hero-frame" *ngFor="let hero of equipo1"></div>
+  <div class="section-divider"></div>
+
+  <div class="row mb-3 align-items-center">
+    <div class="col d-flex flex-wrap justify-content-center">
+      <div class="hero-slot" *ngFor="let hero of team1"></div>
     </div>
-    <div class="col d-flex justify-content-around">
-      <div class="hero-frame" *ngFor="let hero of equipo2"></div>
+
+    <div class="col-2">
+      <div class="mandaos-box">
+        <div class="mandaos-title">LOS 10 MANDAOS</div>
+        <div class="mandaos-icon">😵</div>
+      </div>
+    </div>
+
+    <div class="col d-flex  flex-wrap justify-content-center">
+      <div class="hero-slot" *ngFor="let hero of team2"></div>
     </div>
   </div>
+
+  <div class="section-divider"></div>
 
   <div class="row text-center my-4">
     <div class="col-5 d-flex justify-content-center align-items-center flex-wrap">
-      <div class="selector-frame"></div>
-      <div class="selector-frame"></div>
-      <div class="selector-frame"></div>
+      <div class="selection-slot"></div>
+      <div class="selection-slot"></div>
+      <div class="selection-slot"></div>
+      <div class="selection-slot"></div>
+      <div class="selection-slot"></div>
     </div>
+
     <div class="col-2 d-flex align-items-center justify-content-center">
-      <div class="ruleta ruleta-verde">LA RULETA SELECCIONADORA</div>
+      <div class="wheel wheel-green">LA RULETA SELECCIONADORA</div>
     </div>
+
     <div class="col-5 d-flex justify-content-center align-items-center flex-wrap">
-      <div class="selector-frame"></div>
-      <div class="selector-frame"></div>
-      <div class="selector-frame"></div>
+      <div class="selection-slot"></div>
+      <div class="selection-slot"></div>
+      <div class="selection-slot"></div>
+      <div class="selection-slot"></div>
+      <div class="selection-slot"></div>
     </div>
+
   </div>
+
+  <div class="section-divider"></div>
+
 
   <div class="row justify-content-center my-4">
-    <div class="ruleta ruleta-roja">LA RULETA CANCELADORA</div>
+    <div class="wheel wheel-red col-3">LA RULETA CANCELADORA</div>
   </div>
 
+  <div class="section-divider"></div>
+
+
   <div class="row justify-content-center mt-4">
-    <h2 class="comodin-title">COMODÍN</h2>
+    <h2 class="wildcard-title">COMODÍN</h2>
   </div>
 </div>
+
 
