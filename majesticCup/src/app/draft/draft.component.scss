@@ -1,3 +1,20 @@
+.main-div {
+  margin-top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #efefef;
+}
+
+.section-divider {
+  height: 15px;
+  width: 90%;
+  background: #ccc;
+  opacity: 0.5;
+  margin: 20px auto 20px auto;
+  border-radius: 4px;
+}
+
+
 .team-title {
   font-size: 4rem;
   font-weight: bold;
@@ -6,7 +23,7 @@
 }
 
 .tournament-title {
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #ffd700;
   text-shadow: 3px 3px #000;
@@ -14,8 +31,8 @@
 
 .hero-slot,
 .selection-slot {
-  width: 80px;
-  height: 120px;
+  width: 100px;
+  height: 150px;
   border: 2px dashed #ccc;
   background-color: #f8f9fa;
   margin: 5px;
