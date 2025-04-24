@@ -15,10 +15,10 @@
 
   <div class="row mb-3 align-items-center">
     <div class="col d-flex flex-wrap justify-content-center">
-      <div class="hero-slot" *ngFor="let hero of team1"></div>
+      <div class="hero-slot" *ngFor="let hero of firstBanned">{{hero.name}}</div>
     </div>
 
-    <div class="col-2">
+    <div class="col-2" (click)="getBannedHeroes()">
       <div class="mandaos-box">
         <div class="mandaos-title">LOS 10 MANDAOS</div>
         <div class="mandaos-icon">😵</div>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="col d-flex  flex-wrap justify-content-center">
-      <div class="hero-slot" *ngFor="let hero of team2"></div>
+      <div class="hero-slot" *ngFor="let hero of secondBanned">{{hero.name}}</div>
     </div>
   </div>
 
