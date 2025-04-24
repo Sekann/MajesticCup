@@ -45,7 +45,7 @@
 .banned-hero {
   width: 80px;
   height: 120px;
-  border: 2px #8c7323;
+  border: 2px solid #88702a;
   background-color: #f8f9fa;
   margin: 5px;
   border-radius: 8px;
@@ -75,9 +75,19 @@
   color: white;
 }
 
+.wheel-green:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
 .wheel-red {
   background-color: #dc3545;
   color: white;
+}
+
+.wheel-red:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .wildcard-title {
@@ -96,10 +106,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.mandaos-box:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-}
 
 .mandaos-title {
   font-weight: bold;
