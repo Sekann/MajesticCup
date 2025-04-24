@@ -28,14 +28,14 @@
           El First to Challenger es una batalla digna de Noxus, donde el respeto se gana a la fuerza. Desde el 9 de
           enero,
           equipos de hasta 6 jugadores tendrán que demostrar su fortaleza, ya sea con ingenio estratégico o pura
-          habilidad implacable.
+          habilidad implacable. 
       </p>
       <p class="fst-italic">
           ¿Quién demostrará que merece la cima y el respeto de Noxus?
       </p>
     </div>
 
-    <div *ngFor="let team of teams" class="team-card container mt-4 border border-purple border-2 shadow-lg" (click)="goToStats()">
+    <div *ngFor="let team of teams" class="team-card container mt-4 border border-purple border-1 shadow-lg" (click)="goToTeamInfo(team.slug)">
       <img src="images/image.png" alt="Foto equipo" />
       <div class="team-name text-light fw-semibold fs-5">{{ team.name }}</div>
       <div class="team-victories d-flex align-items-center gap-1 fs-5 fw-semibold text-light">
