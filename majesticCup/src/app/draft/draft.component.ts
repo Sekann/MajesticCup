@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import {NgForOf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {HeroInterface} from '../services/interfaces/hero-interface';
 
 @Component({
   selector: 'app-draft',
   imports: [
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './draft.component.html',
   styleUrl: './draft.component.scss'
