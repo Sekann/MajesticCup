@@ -74,6 +74,7 @@
   </div>
 </div>
 
+<!--TODO Arreglar ruleta selección héroes-->
 <div *ngIf="heroWheel" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 z-3" (click)="closeWheel()">
   <div class="position-absolute top-50 start-50 w-75 h-75 translate-middle bg-white rounded p-4 shadow details slide-up"  (click)="$event.stopPropagation()">
     <app-hero-wheel></app-hero-wheel>
