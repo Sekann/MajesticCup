@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Team } from '../services/interfaces/team';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -100,4 +101,10 @@ export class InicioComponent {
       ]
     }
   ];
+  constructor(private router: Router) {}
+
+  goToStats(){
+    this.router.navigate(['/estadisticas']);
+  }
+
 }
