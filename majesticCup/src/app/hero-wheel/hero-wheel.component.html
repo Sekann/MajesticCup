@@ -1,0 +1,14 @@
+<div class="d-flex flex-column align-items-center">
+  <div class="roulette-container mt-2">
+    <div class="roulette" [style.transform]="'rotate(' + currentRotation + 'deg)'">
+      <div *ngFor="let section of sections; let i = index" class="section" [style.transform]="'rotate(' + (i * anglePerSection) + 'deg)'">
+        Heroe {{ i + 1 }}
+      </div>
+      <div class="center"></div>
+    </div>
+    <div class="pointer"></div>
+  </div>
+
+  <button class="btn btn-success mt-4" (click)="spinRoulette()">Spin</button>
+</div>
+

@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {HeroInterface} from '../services/interfaces/hero-interface';
+import {HeroWheelComponent} from '../hero-wheel/hero-wheel.component';
 
 @Component({
   selector: 'app-draft',
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    NgClass,
+    HeroWheelComponent
   ],
   templateUrl: './draft.component.html',
   styleUrl: './draft.component.scss'
@@ -15,9 +18,37 @@ export class DraftComponent {
   bannedHeroes: HeroInterface[] = [];
   firstBanned= new Array<HeroInterface>(5);
   secondBanned = new Array<HeroInterface>(5);
+  heroWheel: boolean = false;
 
+  revealIndex = 0;
 
   getBannedHeroes() {
+    this.banHeroes();
+
+    this.firstBanned = [];
+    this.secondBanned = [];
+
+    this.revealIndex = 0;
+    this.revealNextHero();
+  }
+
+  revealNextHero() {
+    if (this.revealIndex < this.bannedHeroes.length) {
+      const current = this.bannedHeroes[this.revealIndex];
+
+      if (this.revealIndex < 5) {
+        this.firstBanned.push(current);
+      } else {
+        this.secondBanned.push(current);
+      }
+
+      this.revealIndex++;
+
+      setTimeout(() => this.revealNextHero(), 500);
+    }
+  }
+
+  banHeroes() {
     this.bannedHeroes = [
     {slug: "ffdfdf",
       name:"Heroe1",
@@ -48,18 +79,20 @@ export class DraftComponent {
         image:"fdjfdfdjfdjf"},
       {slug: "ffdfdf",
         name:"Heroe10",
-        image:"fdjfdfdjfdjf"},
-
-    ]
+        image:"fdjfdfdjfdjf"},]
 
     for (let i = 0; i < 5; i++) {
       this.firstBanned[i] = this.bannedHeroes[i];
       this.secondBanned[i] = this.bannedHeroes[i+5];
     }
-
-    console.log(this.bannedHeroes);
-    console.log(this.firstBanned);
-    console.log(this.secondBanned);
-
   }
+
+  openWheel(): void {
+    this.heroWheel = true;
+  }
+
+  closeWheel(): void {
+    this.heroWheel = false;
+  }
+
 }

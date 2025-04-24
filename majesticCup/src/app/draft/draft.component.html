@@ -16,7 +16,7 @@
   <div class="row mb-3 align-items-center">
     <div class="col d-flex flex-wrap justify-content-center">
       <div class="hero-slot" *ngFor="let hero of firstBanned">
-        <p *ngIf="bannedHeroes.length>0">{{hero.name}}</p>
+        <p *ngIf="bannedHeroes.length>0" class="hero-inner">{{hero.name}}</p>
       </div>
     </div>
 
@@ -28,8 +28,8 @@
     </div>
 
     <div class="col d-flex  flex-wrap justify-content-center">
-      <div class="hero-slot" *ngFor="let hero of secondBanned">
-        <p *ngIf="bannedHeroes.length>0">{{hero.name}}</p>
+      <div [ngClass]="bannedHeroes.length>0 ? 'banned-hero' : 'hero-slot'" *ngFor="let hero of secondBanned">
+        <p *ngIf="bannedHeroes.length>0" class="hero-inner">{{hero.name}}</p>
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@
       <div class="selection-slot"></div>
     </div>
 
-    <div class="col-2 d-flex align-items-center justify-content-center">
+    <div class="col-2 d-flex align-items-center justify-content-center" (click)="openWheel()">
       <div class="wheel wheel-green">LA RULETA SELECCIONADORA</div>
     </div>
 
@@ -71,6 +71,12 @@
 
   <div class="row justify-content-center">
     <h2 class="wildcard-title">COMODÍN</h2>
+  </div>
+</div>
+
+<div *ngIf="heroWheel" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 z-3" (click)="closeWheel()">
+  <div class="position-absolute top-50 start-50 w-75 h-75 translate-middle bg-white rounded p-4 shadow details slide-up"  (click)="$event.stopPropagation()">
+    <app-hero-wheel></app-hero-wheel>
   </div>
 </div>
 
