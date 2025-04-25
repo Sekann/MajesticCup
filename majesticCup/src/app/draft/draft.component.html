@@ -50,11 +50,11 @@
     </div>
 
     <div class="col-5 d-flex justify-content-center align-items-center flex-wrap">
+      <div class="selection-slot"><div *ngIf="selectedHerosTeam2[0] != null">{{selectedHerosTeam2[0].name}}</div></div>
+      <div class="selection-slot"><div *ngIf="selectedHerosTeam2[1] != null">{{selectedHerosTeam2[1].name}}</div></div>
+      <div class="selection-slot"><div *ngIf="selectedHerosTeam2[2] != null">{{selectedHerosTeam2[2].name}}</div></div>
       <div class="selection-slot"></div>
-      <div class="selection-slot"></div>
-      <div class="selection-slot"></div>
-      <div class="selection-slot"></div>
-      <div class="selection-slot"></div>
+      <div class="selection-slot"><div *ngIf="selectedHerosTeam2[3] != null">{{selectedHerosTeam2[3].name}}</div></div>
     </div>
 
   </div>
@@ -77,7 +77,7 @@
 <!--TODO Arreglar ruleta selección héroes-->
 <div *ngIf="heroWheel" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 z-3" (click)="closeWheel()">
   <div class="position-absolute top-50 start-50 w-75 h-75 translate-middle bg-white rounded p-4 shadow details slide-up"  (click)="$event.stopPropagation()">
-    <app-hero-wheel></app-hero-wheel>
+    <app-hero-wheel (close)="onCloseWheel($event)"></app-hero-wheel>
   </div>
 </div>
 
