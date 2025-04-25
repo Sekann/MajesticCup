@@ -1,10 +1,193 @@
 import { Injectable } from '@angular/core';
 import { Team } from '../interfaces/team';
+import { Game } from '../interfaces/game';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
+  private games: Game[] = [
+    {
+      slug: 'game-1',
+      team1: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      team2: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      date: new Date(),
+      bans: [],
+      usedHeroes: [],
+      first_team_to_throw: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+    },
+    {
+      slug: 'game-2',
+      team1: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      team2: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      date: new Date(),
+      bans: [],
+      usedHeroes: [],
+      first_team_to_throw: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+    },
+    {
+      slug: 'game-1',
+      team1: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      team2: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      date: new Date(),
+      bans: [],
+      usedHeroes: [],
+      first_team_to_throw: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+    },
+    {
+      slug: 'game-2',
+      team1: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      team2: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      date: new Date(),
+      bans: [],
+      usedHeroes: [],
+      first_team_to_throw: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+    },
+    {
+      slug: 'game-1',
+      team1: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      team2: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      date: new Date(),
+      bans: [],
+      usedHeroes: [],
+      first_team_to_throw: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+    },
+    {
+      slug: 'game-2',
+      team1: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      team2: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+      date: new Date(),
+      bans: [],
+      usedHeroes: [],
+      first_team_to_throw: {
+        slug: 'equipo-elmillor',
+        name: 'Equipo Elmillor',
+        victories: 86,
+        losses: 42,
+        winrate: 67,
+        players: []
+      },
+    }
+  ];
   private teams: Team[] = [
     {
       slug: 'equipo-elmillor',
@@ -94,6 +277,10 @@ export class TeamService {
 
   getTeams(): Team[] {
     return this.teams;
+  }
+
+  getGames(): Game[] {
+    return this.games;
   }
 
   getTeamBySlug(slug: string): Team | undefined {

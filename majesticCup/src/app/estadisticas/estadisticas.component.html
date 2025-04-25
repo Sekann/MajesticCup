@@ -1,5 +1,44 @@
-<h1 class="title">Estadísticas</h1>
+<h1 class="title">Partidas</h1>
 
+<div class="games-wrapper d-flex flex-wrap justify-content-center gap-3 px-2">
+  <div *ngFor="let game of visibleGames" class="game-card p-3">
+    <div class="d-flex justify-content-between align-items-center mb-2 text-light fw-bold text-center">
+      <span class="w-50">Teams</span>
+      <span class="w-50">Winner</span>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <div class="d-flex flex-column gap-1 w-50">
+        <div class="d-flex align-items-center gap-2">
+          <img src="images/image.png" alt="Foto equipo 1" class="team-icon" />
+          <span class="text-light small">{{ game.team1.name }}</span>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <img src="images/image.png" alt="Foto equipo 2" class="team-icon" />
+          <span class="text-light small">{{ game.team2.name }}</span>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-center w-50">
+        <img src="images/image.png" alt="Ganador" class="team-icon me-2" />
+        <span class="text-light small">{{ game.team1.name }}</span>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end small text-light opacity-75 mt-2 pe-1">
+      {{ game.date | date: 'dd/MM/yyyy HH:mm' }}
+    </div>
+  </div>
+</div>
+
+<div class="text-center mt-4" *ngIf="games.length > gamesToShow">
+  <button (click)="showMoreGames()" class="btn btn-warning">
+    {{ showingAll ? 'Ver menos' : 'Ver más partidas' }}
+  </button>
+</div>
+
+
+<h1 class="title">Estadísticas</h1>
 <div *ngFor="let team of teams" class="team-card container mt-4 border border-purple border-1 shadow-lg" (click)="goToTeamInfo(team.slug)">
   <img src="images/image.png" alt="Foto equipo" />
   <div class="team-name text-light fw-semibold fs-5">{{ team.name }}</div>
