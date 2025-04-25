@@ -1,6 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {NgForOf} from '@angular/common';
-import {HeroComsService} from '../services/communication/hero-coms.service';
 import {HeroInterface} from '../services/interfaces/hero-interface';
 
 @Component({
@@ -19,7 +18,7 @@ export class HeroWheelComponent implements OnInit{
   @Output() close = new EventEmitter<HeroInterface>();
 
 
-  constructor(private heroComs: HeroComsService) {
+  constructor() {
   }
 
 
@@ -35,10 +34,12 @@ export class HeroWheelComponent implements OnInit{
     this.currentRotation += extraSpins + finalAngle;
 
     setTimeout(() => {
-
+      this.close.emit(this.heroArray[randomIndex]);
     }, 4000);
-    this.heroComs.changeHero(this.heroArray[randomIndex]);
-    this.close.emit(this.heroArray[randomIndex]);
+
+
+
+
   }
 
   fillUpHeroArray() {

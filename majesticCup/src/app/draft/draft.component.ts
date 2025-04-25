@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {HeroInterface} from '../services/interfaces/hero-interface';
 import {HeroWheelComponent} from '../hero-wheel/hero-wheel.component';
@@ -15,7 +15,7 @@ import {HeroComsService} from '../services/communication/hero-coms.service';
   templateUrl: './draft.component.html',
   styleUrl: './draft.component.scss'
 })
-export class DraftComponent implements OnInit{
+export class DraftComponent {
   bannedHeroes: HeroInterface[] = [];
   firstBanned= new Array<HeroInterface>(5);
   secondBanned = new Array<HeroInterface>(5);
@@ -26,9 +26,6 @@ export class DraftComponent implements OnInit{
   constructor(private heroComs: HeroComsService) {
   }
 
-  ngOnInit() {
-
-  }
 
   revealIndex = 0;
 
@@ -102,22 +99,11 @@ export class DraftComponent implements OnInit{
 
   onCloseWheel(hero:HeroInterface): void {
     this.heroComs.changeHero(hero);
-    this.heroComs.heroComs$.subscribe(hero => {
-      if (!hero) {
-        hero = sessionStorage.getItem('currentHero') as unknown as HeroInterface;
-      }
-      console.log(this.selectedHerosTeam1.length);
-      console.log(this.selectedHerosTeam2.length);
-    })
 
     if (this.selectedHerosTeam1.length == this.selectedHerosTeam2.length) {
       this.selectedHerosTeam1.push(hero)
     } else {
       this.selectedHerosTeam2.push(hero)
     }
-
-
-    console.log(this.selectedHerosTeam1)
-    console.log(this.selectedHerosTeam2)
   }
 }
