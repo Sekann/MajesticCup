@@ -6,6 +6,61 @@
   margin-bottom: 43px;
   color: rgb(235, 224, 205);
 }
+.games-wrapper {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.game-card {
+  background-color: #1a1a1a;
+  border: 1px solid #ffc107;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.2);
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 320px;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  .team-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .small {
+    font-size: 0.875rem;
+  }
+
+  .w-50 {
+    width: 50%;
+  }
+}
+
+@media (min-width: 576px) {
+  .game-card {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .game-card {
+    width: calc(33.333% - 1rem);
+  }
+}
+
+@media (min-width: 992px) {
+  .game-card {
+    width: calc(25% - 1rem - 0.25rem);  }
+}
+
 
 .team-card {
   display: flex;
