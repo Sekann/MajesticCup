@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {HeroInterface} from '../services/interfaces/hero-interface';
 import {HeroWheelComponent} from '../hero-wheel/hero-wheel.component';
@@ -23,32 +23,11 @@ export class DraftComponent implements OnInit{
   selectedHerosTeam1: HeroInterface[] = [];
   selectedHerosTeam2: HeroInterface[] = [];
 
-  constructor(private heroComs: HeroComsService, private cd:ChangeDetectorRef) {
+  constructor(private heroComs: HeroComsService) {
   }
 
   ngOnInit() {
-    this.heroComs.heroComs$.subscribe(hero => {
-      if (!hero) {
-        hero = sessionStorage.getItem('currentHero') as unknown as HeroInterface;
-      }
 
-      this.cd.detectChanges();
-
-      console.log(this.selectedHerosTeam1.length);
-      console.log(this.selectedHerosTeam2.length);
-      if (this.selectedHerosTeam1.length == this.selectedHerosTeam2.length) {
-        this.selectedHerosTeam1.push(hero)
-      } else {
-        this.selectedHerosTeam2.push(hero)
-      }
-
-      sessionStorage.removeItem('currentHero');
-    })
-
-
-
-    console.log(this.selectedHerosTeam1)
-    console.log(this.selectedHerosTeam2)
   }
 
   revealIndex = 0;
@@ -123,5 +102,22 @@ export class DraftComponent implements OnInit{
 
   onCloseWheel(hero:HeroInterface): void {
     this.heroComs.changeHero(hero);
+    this.heroComs.heroComs$.subscribe(hero => {
+      if (!hero) {
+        hero = sessionStorage.getItem('currentHero') as unknown as HeroInterface;
+      }
+      console.log(this.selectedHerosTeam1.length);
+      console.log(this.selectedHerosTeam2.length);
+    })
+
+    if (this.selectedHerosTeam1.length == this.selectedHerosTeam2.length) {
+      this.selectedHerosTeam1.push(hero)
+    } else {
+      this.selectedHerosTeam2.push(hero)
+    }
+
+
+    console.log(this.selectedHerosTeam1)
+    console.log(this.selectedHerosTeam2)
   }
 }

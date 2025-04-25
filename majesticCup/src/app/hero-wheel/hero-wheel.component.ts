@@ -35,8 +35,9 @@ export class HeroWheelComponent implements OnInit{
     this.currentRotation += extraSpins + finalAngle;
 
     setTimeout(() => {
-      this.heroComs.changeHero(this.heroArray[randomIndex]);
+
     }, 4000);
+    this.heroComs.changeHero(this.heroArray[randomIndex]);
     this.close.emit(this.heroArray[randomIndex]);
   }
 
