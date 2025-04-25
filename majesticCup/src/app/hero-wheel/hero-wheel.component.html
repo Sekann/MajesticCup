@@ -2,7 +2,7 @@
   <div class="roulette-container mt-2">
     <div class="roulette" [style.transform]="'rotate(' + currentRotation + 'deg)'">
       <div *ngFor="let section of sections; let i = index" class="section" [style.transform]="'rotate(' + (i * anglePerSection) + 'deg)'">
-        Heroe {{ i + 1 }}
+        {{heroArray[i].name}}
       </div>
       <div class="center"></div>
     </div>

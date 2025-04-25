@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForOf} from '@angular/common';
+import {HeroComsService} from '../services/communication/hero-coms.service';
+import {HeroInterface} from '../services/interfaces/hero-interface';
 
 @Component({
   selector: 'app-hero-wheel',
@@ -9,10 +11,18 @@ import {NgForOf} from '@angular/common';
   templateUrl: './hero-wheel.component.html',
   styleUrl: './hero-wheel.component.scss'
 })
-export class HeroWheelComponent {
+export class HeroWheelComponent implements OnInit{
   sections = new Array(28);
+  heroArray: HeroInterface[] = new Array(28);
   anglePerSection = 360 / this.sections.length;
   currentRotation = 0;
+
+  constructor(private heroComs: HeroComsService) {
+  }
+
+  ngOnInit() {
+    this.fillUpHeroArray();
+  }
 
   spinRoulette() {
     const extraSpins = 5 * 360;
@@ -22,9 +32,18 @@ export class HeroWheelComponent {
     this.currentRotation += extraSpins + finalAngle;
 
     setTimeout(() => {
-      const selected = randomIndex;
-      console.log('¡Ganador:', selected, '!');
+      this.heroComs.changeHero(this.heroArray[randomIndex]);
     }, 4000);
+  }
+
+  fillUpHeroArray() {
+    for (let i = 0; i < this.sections.length; i++) {
+      this.heroArray[i] = {
+        slug: "ffdfdf",
+        name:"Heroe" + (i + 1),
+        image:"fdjfdfdjfdjf"
+      };
+    }
   }
 
 }

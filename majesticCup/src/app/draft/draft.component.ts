@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {HeroInterface} from '../services/interfaces/hero-interface';
 import {HeroWheelComponent} from '../hero-wheel/hero-wheel.component';
+import {HeroComsService} from '../services/communication/hero-coms.service';
 
 @Component({
   selector: 'app-draft',
@@ -14,20 +15,37 @@ import {HeroWheelComponent} from '../hero-wheel/hero-wheel.component';
   templateUrl: './draft.component.html',
   styleUrl: './draft.component.scss'
 })
-export class DraftComponent {
+export class DraftComponent implements OnInit {
   bannedHeroes: HeroInterface[] = [];
   firstBanned= new Array<HeroInterface>(5);
   secondBanned = new Array<HeroInterface>(5);
   heroWheel: boolean = false;
+  selectedHerosTeam1: HeroInterface[] = new Array<HeroInterface>(4);
+  selectedHeroesTeam2: HeroInterface[] = new Array<HeroInterface>(4);
+  countFilled = (array: HeroInterface[]) => array.filter(item=>item != null).length
+
+  constructor(private heroComs: HeroComsService) {
+  }
+
+  ngOnInit() {
+    this.heroComs.heroComs$.subscribe(hero => {
+      if (!hero) {
+        hero = sessionStorage.getItem('currentHero') as unknown as HeroInterface;
+      }
+      if (this.countFilled(this.selectedHerosTeam1) == this.countFilled(this.selectedHeroesTeam2)) {
+        this.selectedHerosTeam1.push(hero)
+      } else {
+        this.selectedHeroesTeam2.push(hero)
+      }
+    })
+  }
 
   revealIndex = 0;
 
   getBannedHeroes() {
     this.banHeroes();
-
     this.firstBanned = [];
     this.secondBanned = [];
-
     this.revealIndex = 0;
     this.revealNextHero();
   }
@@ -35,15 +53,12 @@ export class DraftComponent {
   revealNextHero() {
     if (this.revealIndex < this.bannedHeroes.length) {
       const current = this.bannedHeroes[this.revealIndex];
-
       if (this.revealIndex < 5) {
         this.firstBanned.push(current);
       } else {
         this.secondBanned.push(current);
       }
-
       this.revealIndex++;
-
       setTimeout(() => this.revealNextHero(), 500);
     }
   }

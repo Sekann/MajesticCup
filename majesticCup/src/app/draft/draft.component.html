@@ -38,11 +38,11 @@
 
   <div class="row text-center my-4">
     <div class="col-5 d-flex justify-content-center align-items-center flex-wrap">
+      <div class="selection-slot"><div *ngIf="selectedHerosTeam1[0] != null">{{selectedHerosTeam1[0].name}}</div></div>
+      <div class="selection-slot"><div *ngIf="selectedHerosTeam1[1] != null">{{selectedHerosTeam1[1].name}}</div></div>
+      <div class="selection-slot"><div *ngIf="selectedHerosTeam1[2] != null">{{selectedHerosTeam1[2].name}}</div></div>
       <div class="selection-slot"></div>
-      <div class="selection-slot"></div>
-      <div class="selection-slot"></div>
-      <div class="selection-slot"></div>
-      <div class="selection-slot"></div>
+      <div class="selection-slot"><div *ngIf="selectedHerosTeam1[3] != null">{{selectedHerosTeam1[3].name}}</div></div>
     </div>
 
     <div class="col-2 d-flex align-items-center justify-content-center" (click)="openWheel()">
