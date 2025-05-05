@@ -39,6 +39,7 @@
 
 
 <h1 class="title">Estadísticas</h1>
+<div class="match-section">
 <div *ngFor="let team of teams" class="team-card container mt-4 border border-purple border-1 shadow-lg" (click)="goToTeamInfo(team.slug)">
   <img src="images/image.png" alt="Foto equipo" />
   <div class="team-name text-light fw-semibold fs-5">{{ team.name }}</div>
@@ -48,4 +49,5 @@
     <span class="text-danger">{{ team.losses }}</span>
   </div>
   <div class="team-winrate text-light fw-semibold fs-5 text-center">{{ team.winrate }}%</div>
+</div>
 </div>

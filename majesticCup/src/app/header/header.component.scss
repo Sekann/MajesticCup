@@ -35,3 +35,25 @@
     }
   }
   
+  @media (max-width: 430px){
+   
+      .nav-links a{
+        font-size: 0.8rem !important;
+        padding-right: 5px !important;
+      }
+      .logo img{
+        height: 50px !important;
+        width: 50px !important;
+      }
+  }
+  @media (max-width: 380px){
+   
+    .nav-links a{
+      font-size: 0.7rem !important;
+      padding-right: 0px !important;
+    }
+    .logo img{
+      height: 40px !important;
+      width: 40px !important;
+    }
+}
