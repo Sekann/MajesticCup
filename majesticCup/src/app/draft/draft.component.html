@@ -1,84 +1,123 @@
-<div class="main-div text-center">
-  <div class="row mb-4">
-    <div class="col">
+<div class="main-div text-center container-fluid p-2 p-md-4">
+  <div class="row mb-4 gy-3 d-none d-md-flex">
+    <div class="col-md-4">
       <h2 class="team-title">TEAM 1</h2>
     </div>
-    <div class="col">
+    <div class="col-md-4">
       <h1 class="tournament-title">MAJESTIC CUP</h1>
     </div>
-    <div class="col">
+    <div class="col-md-4">
       <h2 class="team-title">TEAM 2</h2>
+    </div>
+  </div>
+
+  <div class="row mb-4 d-md-none">
+    <div class="col-12">
+      <h1 class="tournament-title">MAJESTIC CUP</h1>
     </div>
   </div>
 
   <div class="section-divider"></div>
 
-  <div class="row mb-3 align-items-center">
-    <div class="col d-flex flex-wrap justify-content-center">
-      <div [ngClass]="bannedHeroes.length>0 ? 'banned-hero' : 'hero-slot'" *ngFor="let hero of firstBanned">
-        <p *ngIf="bannedHeroes.length>0" class="hero-inner">{{hero.name}}</p>
+  <div class="row mb-3 align-items-center gy-3">
+    <div class="col-12 col-md-5">
+      <div class="hero-grid">
+        <div [ngClass]="bannedHeroes.length>0 ? 'banned-hero' : 'hero-slot'" *ngFor="let hero of firstBanned">
+          <p *ngIf="bannedHeroes.length>0" class="hero-inner">{{hero.name}}</p>
+        </div>
       </div>
     </div>
 
-    <div class="col-2">
-      <div class="mandaos-box">
+    <div class="col-12 col-md-2">
+      <div class="mandaos-box mx-auto" style="max-width: 200px;">
         <div class="mandaos-title">LOS 10 MANDAOS</div>
         <div class="mandaos-icon">😵</div>
       </div>
     </div>
 
-    <div class="col d-flex  flex-wrap justify-content-center">
-      <div [ngClass]="bannedHeroes.length>0 ? 'banned-hero' : 'hero-slot'" *ngFor="let hero of secondBanned">
-        <p *ngIf="bannedHeroes.length>0" class="hero-inner">{{hero.name}}</p>
+    <div class="col-12 col-md-5">
+      <div class="hero-grid">
+        <div [ngClass]="bannedHeroes.length>0 ? 'banned-hero' : 'hero-slot'" *ngFor="let hero of secondBanned">
+          <p *ngIf="bannedHeroes.length>0" class="hero-inner">{{hero.name}}</p>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="section-divider"></div>
 
-  <div class="row text-center my-4">
-    <div class="col-5 d-flex justify-content-center align-items-center flex-wrap">
-      <div class="selection-slot"><div *ngIf="selectedHerosTeam1[0] != null">{{selectedHerosTeam1[0].name}}</div></div>
-      <div class="selection-slot"><div *ngIf="selectedHerosTeam1[1] != null">{{selectedHerosTeam1[1].name}}</div></div>
-      <div class="selection-slot"><div *ngIf="selectedHerosTeam1[2] != null">{{selectedHerosTeam1[2].name}}</div></div>
-      <div class="selection-slot"></div>
-      <div class="selection-slot"><div *ngIf="selectedHerosTeam1[3] != null">{{selectedHerosTeam1[3].name}}</div></div>
+  <div class="row text-center my-4 gy-3">
+    <div class="col-12 d-md-none mb-2">
+      <h2 class="team-title mobile-team-title">TEAM 1</h2>
     </div>
 
-    <div class="col-2 d-flex align-items-center justify-content-center" (click)="openWheel()">
-      <div class="wheel wheel-green">LA RULETA SELECCIONADORA</div>
+    <div class="col-12 col-md-5">
+      <div class="hero-grid">
+        <div class="selection-slot">
+          <div *ngIf="selectedHerosTeam1[0] != null">{{selectedHerosTeam1[0].name}}</div>
+        </div>
+        <div class="selection-slot">
+          <div *ngIf="selectedHerosTeam1[1] != null">{{selectedHerosTeam1[1].name}}</div>
+        </div>
+        <div class="selection-slot">
+          <div *ngIf="selectedHerosTeam1[2] != null">{{selectedHerosTeam1[2].name}}</div>
+        </div>
+        <div class="selection-slot"></div>
+        <div class="selection-slot">
+          <div *ngIf="selectedHerosTeam1[3] != null">{{selectedHerosTeam1[3].name}}</div>
+        </div>
+      </div>
     </div>
 
-    <div class="col-5 d-flex justify-content-center align-items-center flex-wrap">
-      <div class="selection-slot"><div *ngIf="selectedHerosTeam2[0] != null">{{selectedHerosTeam2[0].name}}</div></div>
-      <div class="selection-slot"><div *ngIf="selectedHerosTeam2[1] != null">{{selectedHerosTeam2[1].name}}</div></div>
-      <div class="selection-slot"><div *ngIf="selectedHerosTeam2[2] != null">{{selectedHerosTeam2[2].name}}</div></div>
-      <div class="selection-slot"></div>
-      <div class="selection-slot"><div *ngIf="selectedHerosTeam2[3] != null">{{selectedHerosTeam2[3].name}}</div></div>
+    <div class="col-12 col-md-2 d-flex align-items-center justify-content-center my-3 my-md-0" (click)="openWheel()">
+      <div class="wheel wheel-green w-100">LA RULETA SELECCIONADORA</div>
     </div>
 
+    <!-- Título Team 2 para móvil -->
+    <div class="col-12 d-md-none mb-2">
+      <h2 class="team-title mobile-team-title">TEAM 2</h2>
+    </div>
+
+    <div class="col-12 col-md-5">
+      <div class="hero-grid">
+        <div class="selection-slot">
+          <div *ngIf="selectedHerosTeam2[0] != null">{{selectedHerosTeam2[0].name}}</div>
+        </div>
+        <div class="selection-slot">
+          <div *ngIf="selectedHerosTeam2[1] != null">{{selectedHerosTeam2[1].name}}</div>
+        </div>
+        <div class="selection-slot">
+          <div *ngIf="selectedHerosTeam2[2] != null">{{selectedHerosTeam2[2].name}}</div>
+        </div>
+        <div class="selection-slot"></div>
+        <div class="selection-slot">
+          <div *ngIf="selectedHerosTeam2[3] != null">{{selectedHerosTeam2[3].name}}</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="section-divider"></div>
-
 
   <div class="row justify-content-center my-4" (click)="getBannedHeroes()">
-    <div class="wheel wheel-red col-3">LA RULETA CANCELADORA</div>
+    <div class="col-12 col-md-4 col-lg-3">
+      <div class="wheel wheel-red w-100">LA RULETA CANCELADORA</div>
+    </div>
   </div>
 
   <div class="section-divider"></div>
 
-
   <div class="row justify-content-center">
-    <h2 class="wildcard-title">COMODÍN</h2>
+    <div class="col-12">
+      <h2 class="wildcard-title">COMODÍN</h2>
+    </div>
   </div>
 </div>
 
-<!--TODO Arreglar ruleta selección héroes-->
 <div *ngIf="heroWheel" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 z-3" (click)="closeWheel()">
-  <div class="position-absolute top-50 start-50 w-75 h-75 translate-middle bg-white rounded p-4 shadow details slide-up"  (click)="$event.stopPropagation()">
+  <div class="position-absolute top-50 start-50 translate-middle bg-white rounded p-3 p-md-4 shadow details"
+       style="width: 95%; max-width: 900px; height: 90%; max-height: 800px;"
+       (click)="$event.stopPropagation()">
     <app-hero-wheel (close)="onCloseWheel($event)"></app-hero-wheel>
   </div>
 </div>
-
-
