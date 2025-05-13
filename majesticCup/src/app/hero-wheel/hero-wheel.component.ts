@@ -31,7 +31,7 @@ export class HeroWheelComponent implements OnInit {
     let cycles = 0;
     const totalCycles = 2;
     const finalIndex = Math.floor(Math.random() * this.heroArray.length);
-    const baseDelay = 300; // Delay base aumentado
+    const baseDelay = 175;
 
     const animate = () => {
       this.currentIndex = (this.currentIndex + 1) % this.heroArray.length;
@@ -43,11 +43,10 @@ export class HeroWheelComponent implements OnInit {
       let delay;
       const cycleProgress = this.currentIndex / this.heroArray.length;
 
-      // Velocidad variable según el ciclo
       if (cycles === 0) {
-        delay = baseDelay; // Primer ciclo más lento
+        delay = baseDelay;
       } else if (cycles === 1) {
-        delay = baseDelay - 50; // Segundo ciclo un poco más rápido
+        delay = baseDelay - 50;
       } else {
         // Último ciclo: ralentización progresiva
         delay = baseDelay + (cycleProgress * 500);
@@ -60,7 +59,7 @@ export class HeroWheelComponent implements OnInit {
         this.isSelecting = false;
         setTimeout(() => {
           this.close.emit(this.heroArray[finalIndex]);
-        }, 2000);
+        }, 1000);
       }
     };
 
