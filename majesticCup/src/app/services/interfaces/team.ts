@@ -1,10 +1,9 @@
-import { Player } from "./player";
-
 export interface Team {
+  id: number;
   slug: string;
-  name: string;
-  victories: number;
-  losses: number;
+  nombre: string;
+  victorias: number;
+  derrotas: number;
   winrate: number;
-  players: Player[];
+  imagen: string | null;
 }
