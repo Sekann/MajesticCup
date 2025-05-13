@@ -1,41 +1,22 @@
-<h1 class="title">{{ team?.name }}</h1>
+<h1 class="title">{{ team?.nombre }}</h1>
 
 <div *ngIf="team">
-  <div *ngFor="let player of team.players" class="player-card mb-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 p-3 rounded-4 border border-white text-light shadow-lg w-100">
+  <div *ngFor="let player of players" class="player-card mb-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 p-3 rounded-4 border border-white text-light shadow-lg w-100">
 
     <div class="d-flex align-items-center gap-3 flex-shrink-0" style="min-width: 150px;">
-      <img [src]="player.imageUrl" class="rounded-circle object-fit-cover border border-light" style="width: 64px; height: 64px;" />
       <div class="fw-bold text-lg ">
-        <a *ngIf="player.twitchUrl; else plainNick" [href]="player.twitchUrl" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-light">
-          {{ player.nickname }}
-        </a>
-        <ng-template #plainNick>{{ player.nickname }}</ng-template>
+        {{ player.nickname }}
       </div>
     </div>
 
-    <p class="nickname text-light text-center text-md-start w-100 w-md-20 mb-0">{{ player.name }}</p>
-
-    <div class="d-flex justify-content-center align-items-center gap-2 w-100 w-md-15 text-light fw-bold mb-0">
-      <span class="text-success">{{ player.victories }}</span>
-      <span>/</span>
-      <span class="text-danger">{{ player.losses }}</span>
-    </div>
-
-    <p class="fw-bold text-light text-center mb-0 w-100 w-md-10">{{ player.winrate }}%</p>
+    <p class="nickname text-light text-center text-md-start w-100 w-md-20 mb-0">{{ player.nombre }}</p>
 
     <div class="d-flex justify-content-center justify-content-md-end gap-3 w-100 w-md-15">
-      <a *ngIf="player.kickUrl" [href]="player.kickUrl" target="_blank" rel="noopener noreferrer">
-        <img class="social-icon" src="/images/kick.png" alt="Kick" />
-      </a>
-      <a *ngIf="player.twitchUrl" [href]="player.twitchUrl" target="_blank" rel="noopener noreferrer">
-        <img class="social-icon" src="images/twitch.png" alt="Twitch" />
-      </a>
-      <a *ngIf="player.twitterUrl" [href]="player.twitterUrl" target="_blank" rel="noopener noreferrer">
-        <img class="social-icon" src="/images/x.png" alt="Twitter" />
-      </a>
-      <a *ngIf="player.opggUrl" [href]="player.opggUrl" target="_blank" rel="noopener noreferrer">
-        <img class="social-icon" src="images/opgg.png" alt="OP.GG" />
-      </a>
+      <ng-container *ngFor="let red of player.red_social">
+        <a [href]="red.link" target="_blank" rel="noopener noreferrer">
+          <img [src]="red.red_icono" [alt]="red.red_nombre" class="social-icon" />
+        </a>
+      </ng-container>
     </div>
 
   </div>

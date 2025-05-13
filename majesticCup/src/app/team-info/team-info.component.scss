@@ -32,6 +32,10 @@
         justify-content: center !important;
       }
     }
+    @media (max-width: 480px) {
+      max-width: 350px;
+
+    }
   }
   
   .title {

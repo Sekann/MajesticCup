@@ -10,23 +10,24 @@
     <div class="d-flex justify-content-between">
       <div class="d-flex flex-column gap-1 w-50">
         <div class="d-flex align-items-center gap-2">
-          <img src="images/image.png" alt="Foto equipo 1" class="team-icon" />
-          <span class="text-light small">{{ game.team1.name }}</span>
+          <img [src]="game.equipo1.imagen ?? '/images/image.png'" alt="Foto equipo 1" class="team-icon" />
+          <span class="text-light small">{{ game.equipo1.nombre }}</span>
         </div>
         <div class="d-flex align-items-center gap-2">
-          <img src="images/image.png" alt="Foto equipo 2" class="team-icon" />
-          <span class="text-light small">{{ game.team2.name }}</span>
+          <img [src]="game.equipo2.imagen ?? '/images/image.png'" alt="Foto equipo 2" class="team-icon" />
+          <span class="text-light small">{{ game.equipo2.nombre }}</span>
         </div>
       </div>
 
       <div class="d-flex align-items-center justify-content-center w-50">
-        <img src="images/image.png" alt="Ganador" class="team-icon me-2" />
-        <span class="text-light small">{{ game.team1.name }}</span>
+        <img [src]="'/images/image.png'" alt="Ganador" class="team-icon me-2" />
+        <span class="text-light small">{{ game.ganador }}</span>
       </div>
+      
     </div>
 
     <div class="d-flex justify-content-end small text-light opacity-75 mt-2 pe-1">
-      {{ game.date | date: 'dd/MM/yyyy HH:mm' }}
+      {{ game.fecha | date: 'dd/MM/yyyy HH:mm' }}
     </div>
   </div>
 </div>
@@ -37,15 +38,16 @@
   </button>
 </div>
 
-
 <h1 class="title">Estadísticas</h1>
-<div *ngFor="let team of teams" class="team-card container mt-4 border border-purple border-1 shadow-lg" (click)="goToTeamInfo(team.slug)">
-  <img src="images/image.png" alt="Foto equipo" />
-  <div class="team-name text-light fw-semibold fs-5">{{ team.name }}</div>
-  <div class="team-victories d-flex align-items-center gap-1 fs-5 fw-semibold text-light">
-    <span class="text-success">{{ team.victories }}</span>
-    <span class="text-danger">/</span>
-    <span class="text-danger">{{ team.losses }}</span>
+<div class="match-section">
+  <div *ngFor="let team of teams" class="team-card container mt-4 border border-purple border-1 shadow-lg" (click)="goToTeamInfo(team.slug)">
+    <img [src]="team.imagen ?? '/images/image.png'" alt="Foto equipo" />
+    <div class="team-name text-light fw-semibold fs-5">{{ team.nombre }}</div>
+    <div class="team-victories d-flex align-items-center gap-1 fs-5 fw-semibold text-light">
+      <span class="text-success">{{ team.victorias }}</span>
+      <span class="text-danger">/</span>
+      <span class="text-danger">{{ team.derrotas }}</span>
+    </div>
+    <div class="team-winrate text-light fw-semibold fs-5 text-center">{{ team.winrate }}%</div>
   </div>
-  <div class="team-winrate text-light fw-semibold fs-5 text-center">{{ team.winrate }}%</div>
 </div>
