@@ -60,21 +60,18 @@ export class HeroWheelComponent implements OnInit {
         delay = baseDelay + (cycleProgress * 500);
       }
 
-      if (cycles < totalCycles || this.currentIndex < finalIndex) {
+      if (cycles < totalCycles || (cycles === totalCycles && this.currentIndex !== finalIndex)) {
         setTimeout(animate, delay);
       } else {
-        this.selectedIndex = finalIndex;
-        this.isSelecting = false;
-        setTimeout(() => {
-          this.heroArray.splice(finalIndex, 1);
-          this.heroComs.changeRemainingHeroes(this.heroArray);
-          this.close.emit(this.heroArray[finalIndex]);
-        }, 1000);
-
-
+          this.selectedIndex = finalIndex;
+          this.isSelecting = false;
+          setTimeout(() => {
+            this.close.emit(this.heroArray[finalIndex]);
+            this.heroArray.splice(finalIndex, 1);
+            this.heroComs.changeRemainingHeroes(this.heroArray);
+          }, 1000);
       }
     };
-
     animate();
   }
 
