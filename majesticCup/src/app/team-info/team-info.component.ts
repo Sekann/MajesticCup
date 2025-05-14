@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TeamService } from '../services/team/team.service';
@@ -12,15 +12,24 @@ import { Player } from '../services/interfaces/player';
   templateUrl: './team-info.component.html',
   styleUrl: './team-info.component.scss'
 })
-export class TeamInfoComponent {
+export class TeamInfoComponent implements OnInit {
   team: Team | undefined;
   players: Player[] = [];
 
-  constructor(private route: ActivatedRoute, private teamService: TeamService) {
+  constructor(private route: ActivatedRoute, private teamService: TeamService) {}
+
+  ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug') || '';
-    this.teamService.getTeamBySlug(slug).subscribe(({ team, players }) => {
-      this.team = team;
+    this.teamService.loadTeams(); 
+    this.teamService.getTeamPlayers(slug).subscribe((players) => {
       this.players = players;
     });
+
+    this.teamService.teams$.subscribe((teams) => {
+      this.team = teams.find(team => team.slug === slug);
+    });
   }
+  getCleanImageUrl(imageUrl: string): string {
+  return imageUrl.replace(/_[a-zA-Z0-9]+(?=\.)/, '');
+}
 }

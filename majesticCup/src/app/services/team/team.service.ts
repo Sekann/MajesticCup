@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, map } from 'rxjs';
+import { Observable, BehaviorSubject, map } from 'rxjs';
 import { Team } from '../interfaces/team';
 import { Game } from '../interfaces/game';
 import { Player } from '../interfaces/player';
@@ -11,21 +11,36 @@ import { Player } from '../interfaces/player';
 export class TeamService {
   private API_URL = 'http://localhost:8000/api';
 
+  private teamsSubject = new BehaviorSubject<Team[]>([]);
+  teams$ = this.teamsSubject.asObservable();
+
+  private gamesSubject = new BehaviorSubject<Game[]>([]);
+  games$ = this.gamesSubject.asObservable();
+
   constructor(private http: HttpClient) {}
 
-  getTeams(): Observable<Team[]> {
-    return this.http.get<{ success: string, data: Team[] }>(`${this.API_URL}/equipos/getAll`)
-      .pipe(map(response => response.data));
+  loadTeams(): void {
+    this.http.get<{ success: string, data: Team[] }>(`${this.API_URL}/equipos/getAll`)
+      .pipe(map(response => response.data))
+      .subscribe((teams) => {
+        this.teamsSubject.next(teams);
+      });
   }
 
-  getTeamBySlug(slug: string): Observable<{ team: Team; players: Player[] }> {
-    const team$ = this.http.get<Team>(`${this.API_URL}/equipos/${slug}`);
-    const players$ = this.http.get<Player[]>(`${this.API_URL}/jugadores/info/${slug}`);
-  
-    return forkJoin({ team: team$, players: players$ }); 
+  loadGames(): void {
+    this.http.get<Game[]>(`${this.API_URL}/partidas`)
+      .subscribe((games) => {
+        this.gamesSubject.next(games);
+      });
   }
 
-  getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(`${this.API_URL}/partidas`);
+  getTeamPlayers(slug: string): Observable<Player[]> {
+    return this.http.get<{ success: Player[] }>(`${this.API_URL}/jugadores/info/${slug}`)
+      .pipe(map(response => response.success));
+  }
+  getTeamBySlug(slug: string): Observable<Team> {
+    return this.teams$.pipe(
+      map(teams => teams.find(team => team.slug === slug) ?? {} as Team)
+    );
   }
 }

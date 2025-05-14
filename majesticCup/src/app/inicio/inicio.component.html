@@ -16,8 +16,8 @@
       <div class="col-12 col-sm-6 ps-sm-4 pe-sm-4">
         <div class="media-box border border-warning bg-dark shadow">
           <div class="ratio ratio-16x9">
-            <iframe src="https://player.twitch.tv/?channel=nissaxter&parent=localhost&autoplay=false"
-              allowfullscreen scrolling="no"></iframe>
+            <iframe src="https://player.twitch.tv/?channel=nissaxter&parent=localhost&autoplay=false" allowfullscreen
+              scrolling="no"></iframe>
           </div>
         </div>
       </div>
@@ -37,7 +37,8 @@
 
     <div *ngFor="let team of teams" class="team-card container mt-4 border border-purple border-1 shadow-lg"
       (click)="goToTeamInfo(team.slug)">
-      <img [src]="team.imagen ?? '/images/image.png'" alt="Foto equipo" />
+      <img [src]="'http://localhost:8000/' + (team.imagen ? getCleanImageUrl(team.imagen) : '/images/image.png')"
+        alt="Foto equipo" class="team-icon" />
       <div class="team-name text-light fw-semibold fs-5">{{ team.nombre }}</div>
       <div class="team-victories d-flex align-items-center gap-1 fs-5 fw-semibold text-light">
         <span class="text-success">{{ team.victorias }}</span>
