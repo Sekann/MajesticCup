@@ -1,6 +1,8 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {NgForOf, NgClass} from '@angular/common';
 import {HeroInterface} from '../services/interfaces/hero-interface';
+import {HeroComsService} from '../services/communication/hero-coms.service';
+import {enviroment} from '../../enviroment/enviroment';
 
 @Component({
   selector: 'app-hero-wheel',
@@ -17,10 +19,17 @@ export class HeroWheelComponent implements OnInit {
   currentIndex: number = -1;
   selectedIndex: number = -1;
   isSelecting: boolean = false;
+
   @Output() close = new EventEmitter<HeroInterface>();
 
+  constructor(private heroComs: HeroComsService) {
+  }
+
   ngOnInit() {
-    this.fillUpHeroArray();
+    this.heroComs.remainingHeroes$.subscribe((heroes) => {
+      this.heroArray = heroes;
+    })
+
   }
 
   startSelection() {
@@ -48,7 +57,6 @@ export class HeroWheelComponent implements OnInit {
       } else if (cycles === 1) {
         delay = baseDelay - 50;
       } else {
-        // Último ciclo: ralentización progresiva
         delay = baseDelay + (cycleProgress * 500);
       }
 
@@ -58,21 +66,17 @@ export class HeroWheelComponent implements OnInit {
         this.selectedIndex = finalIndex;
         this.isSelecting = false;
         setTimeout(() => {
+          this.heroArray.splice(finalIndex, 1);
+          this.heroComs.changeRemainingHeroes(this.heroArray);
           this.close.emit(this.heroArray[finalIndex]);
         }, 1000);
+
+
       }
     };
 
     animate();
   }
 
-  fillUpHeroArray() {
-    for (let i = 0; i < 28; i++) {
-      this.heroArray.push({
-        slug: "hero" + i,
-        name: "Héroe " + (i + 1),
-        image: ""
-      });
-    }
-  }
+  protected readonly enviroment = enviroment;
 }

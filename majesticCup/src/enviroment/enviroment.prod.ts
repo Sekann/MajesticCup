@@ -1,5 +1,6 @@
-export const enviroment = {
+export const environment = {
   production: true,
-  apiUrl: "https://api.google.com/api",
+  apiUrl: "http://localhost:8000/api",
+  imageUrl: "http://localhost:8000",
   tokenSecure: true,
 }

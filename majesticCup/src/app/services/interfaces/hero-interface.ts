@@ -1,5 +1,6 @@
 export interface HeroInterface {
+  id: number;
   slug: string;
-  name: string;
-  image: string;
+  nombre: string;
+  imagen: string;
 }

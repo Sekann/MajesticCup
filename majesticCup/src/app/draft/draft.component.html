@@ -23,7 +23,7 @@
     <div class="col-12 col-md-5">
       <div class="hero-grid">
         <div [ngClass]="bannedHeroes.length>0 ? 'banned-hero' : 'hero-slot'" *ngFor="let hero of firstBanned">
-          <p *ngIf="bannedHeroes.length>0" class="hero-inner">{{hero.name}}</p>
+          <img *ngIf="bannedHeroes.length>0" [src]="enviroment.imageUrl + hero.imagen" alt="{{hero.nombre}}">
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
     <div class="col-12 col-md-5">
       <div class="hero-grid">
         <div [ngClass]="bannedHeroes.length>0 ? 'banned-hero' : 'hero-slot'" *ngFor="let hero of secondBanned">
-          <p *ngIf="bannedHeroes.length>0" class="hero-inner">{{hero.name}}</p>
+          <img *ngIf="bannedHeroes.length>0" [src]="enviroment.imageUrl + hero.imagen" alt="{{hero.nombre}}">
         </div>
       </div>
     </div>
@@ -54,17 +54,17 @@
     <div class="col-12 col-md-5">
       <div class="hero-grid">
         <div class="selection-slot">
-          <div *ngIf="selectedHerosTeam1[0] != null">{{selectedHerosTeam1[0].name}}</div>
+          <img *ngIf="selectedHerosTeam1[0] != null" [src]="enviroment.imageUrl + selectedHerosTeam1[0].imagen" alt="{{selectedHerosTeam1[0].nombre}}">
         </div>
         <div class="selection-slot">
-          <div *ngIf="selectedHerosTeam1[1] != null">{{selectedHerosTeam1[1].name}}</div>
+          <img *ngIf="selectedHerosTeam1[1] != null" [src]="enviroment.imageUrl + selectedHerosTeam1[1].imagen" alt="{{selectedHerosTeam1[1].nombre}}">
         </div>
         <div class="selection-slot">
-          <div *ngIf="selectedHerosTeam1[2] != null">{{selectedHerosTeam1[2].name}}</div>
+          <img *ngIf="selectedHerosTeam1[2] != null" [src]="enviroment.imageUrl + selectedHerosTeam1[2].imagen" alt="{{selectedHerosTeam1[2].nombre}}">
         </div>
         <div class="selection-slot"></div>
         <div class="selection-slot">
-          <div *ngIf="selectedHerosTeam1[3] != null">{{selectedHerosTeam1[3].name}}</div>
+          <img *ngIf="selectedHerosTeam1[3] != null" [src]="enviroment.imageUrl + selectedHerosTeam1[3].imagen" alt="{{selectedHerosTeam1[3].nombre}}">
         </div>
       </div>
     </div>
@@ -80,17 +80,17 @@
     <div class="col-12 col-md-5">
       <div class="hero-grid">
         <div class="selection-slot">
-          <div *ngIf="selectedHerosTeam2[0] != null">{{selectedHerosTeam2[0].name}}</div>
+          <img *ngIf="selectedHerosTeam2[0] != null" [src]="enviroment.imageUrl + selectedHerosTeam2[0].imagen" alt="{{selectedHerosTeam2[0].nombre}}">
         </div>
         <div class="selection-slot">
-          <div *ngIf="selectedHerosTeam2[1] != null">{{selectedHerosTeam2[1].name}}</div>
+          <img *ngIf="selectedHerosTeam2[1] != null" [src]="enviroment.imageUrl + selectedHerosTeam2[1].imagen" alt="{{selectedHerosTeam2[1].nombre}}">
         </div>
         <div class="selection-slot">
-          <div *ngIf="selectedHerosTeam2[2] != null">{{selectedHerosTeam2[2].name}}</div>
+          <img *ngIf="selectedHerosTeam2[2] != null" [src]="enviroment.imageUrl + selectedHerosTeam2[2].imagen" alt="{{selectedHerosTeam2[2].nombre}}">
         </div>
         <div class="selection-slot"></div>
         <div class="selection-slot">
-          <div *ngIf="selectedHerosTeam2[3] != null">{{selectedHerosTeam2[3].name}}</div>
+          <img *ngIf="selectedHerosTeam2[3] != null" [src]="enviroment.imageUrl + selectedHerosTeam2[3].imagen" alt="{{selectedHerosTeam2[3].nombre}}">
         </div>
       </div>
     </div>
