@@ -1,14 +1,13 @@
-<div class="d-flex flex-column align-items-center">
-  <div class="roulette-container mt-2">
-    <div class="roulette" [style.transform]="'rotate(' + currentRotation + 'deg)'">
-      <div *ngFor="let section of sections; let i = index" class="section" [style.transform]="'rotate(' + (i * anglePerSection) + 'deg)'">
-        {{heroArray[i].name}}
+<div class="hero-selector-container">
+  <div class="heroes-grid">
+    <div *ngFor="let hero of heroArray; let i = index" class="hero-card" [class.highlighted]="currentIndex === i" [class.selected]="selectedIndex === i">
+      <div class="hero-content">
+        <div class="hero-name">{{hero.name}}</div>
       </div>
-      <div class="center"></div>
     </div>
-    <div class="pointer"></div>
   </div>
 
-  <button class="btn btn-success mt-4" (click)="spinRoulette()">Spin</button>
+  <button class="selection-button" (click)="startSelection()" [disabled]="isSelecting">
+    Seleccionar Héroe
+  </button>
 </div>
-

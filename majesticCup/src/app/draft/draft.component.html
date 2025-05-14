@@ -73,7 +73,6 @@
       <div class="wheel wheel-green w-100">LA RULETA SELECCIONADORA</div>
     </div>
 
-    <!-- Título Team 2 para móvil -->
     <div class="col-12 d-md-none mb-2">
       <h2 class="team-title mobile-team-title">TEAM 2</h2>
     </div>
@@ -115,8 +114,8 @@
 </div>
 
 <div *ngIf="heroWheel" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 z-3" (click)="closeWheel()">
-  <div class="position-absolute top-50 start-50 translate-middle bg-white rounded p-3 p-md-4 shadow details"
-       style="width: 95%; max-width: 900px; height: 90%; max-height: 800px;"
+  <div class="position-absolute top-50 start-50 translate-middle bg-white rounded shadow details"
+       style="width: 95%; max-width: 100%; height: 95%;"
        (click)="$event.stopPropagation()">
     <app-hero-wheel (close)="onCloseWheel($event)"></app-hero-wheel>
   </div>

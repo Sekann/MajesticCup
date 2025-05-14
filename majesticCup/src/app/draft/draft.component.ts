@@ -97,9 +97,10 @@ export class DraftComponent {
     this.heroWheel = false;
   }
 
+
   onCloseWheel(hero:HeroInterface): void {
     this.heroComs.changeHero(hero);
-
+    this.heroWheel = false;
     if (this.selectedHerosTeam1.length == this.selectedHerosTeam2.length) {
       this.selectedHerosTeam1.push(hero)
     } else {
