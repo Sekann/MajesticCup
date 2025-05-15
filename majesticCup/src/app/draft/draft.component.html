@@ -64,7 +64,7 @@
         </div>
         <div class="selection-slot">
           <div *ngIf="selectedHerosTeam1[2] != null">
-            <div *ngIf="selectedHerosTeam1.length == 3">
+            <div *ngIf="selectedHerosTeam1.length == 3 && selectedHerosTeam2.length == 2">
               {{selectRandomPos()}}
             </div>
             <div *ngIf="team1Position != null">
