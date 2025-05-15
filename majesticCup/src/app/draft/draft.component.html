@@ -53,24 +53,33 @@
 
     <div class="col-12 col-md-5">
       <div class="hero-grid">
-        <div class="selection-slot">
+        <div class="selection-slot" [ngClass]="selectedHerosTeam1[0] != null ? 'selected':''" >
           <img *ngIf="selectedHerosTeam1[0] != null" [src]="enviroment.imageUrl + selectedHerosTeam1[0].imagen" alt="{{selectedHerosTeam1[0].nombre}}">
         </div>
-        <div class="selection-slot">
+        <div class="selection-slot" [ngClass]="selectedHerosTeam1[1] != null ? 'selected':''">
           <img *ngIf="selectedHerosTeam1[1] != null" [src]="enviroment.imageUrl + selectedHerosTeam1[1].imagen" alt="{{selectedHerosTeam1[1].nombre}}">
         </div>
-        <div class="selection-slot">
+        <div class="selection-slot" [ngClass]="selectedHerosTeam1[2] != null ? 'selected':''">
           <img *ngIf="selectedHerosTeam1[2] != null" [src]="enviroment.imageUrl + selectedHerosTeam1[2].imagen" alt="{{selectedHerosTeam1[2].nombre}}">
         </div>
-        <div class="selection-slot"></div>
         <div class="selection-slot">
+          <div *ngIf="selectedHerosTeam1[2] != null">
+            <div *ngIf="selectedHerosTeam1.length == 3">
+              {{selectRandomPos()}}
+            </div>
+            <div *ngIf="team1Position != null">
+              {{positions[team1Position]}}
+            </div>
+          </div>
+        </div>
+        <div class="selection-slot" [ngClass]="selectedHerosTeam1[3] != null ? 'selected':''">
           <img *ngIf="selectedHerosTeam1[3] != null" [src]="enviroment.imageUrl + selectedHerosTeam1[3].imagen" alt="{{selectedHerosTeam1[3].nombre}}">
         </div>
       </div>
     </div>
 
     <div class="col-12 col-md-2 d-flex align-items-center justify-content-center my-3 my-md-0" (click)="openWheel()">
-      <div class="wheel wheel-green w-100">LA RULETA SELECCIONADORA</div>
+      <div class="wheel wheel-green w-100" *ngIf="bannedHeroes.length>0">LA RULETA SELECCIONADORA</div>
     </div>
 
     <div class="col-12 d-md-none mb-2">
@@ -79,26 +88,32 @@
 
     <div class="col-12 col-md-5">
       <div class="hero-grid">
-        <div class="selection-slot">
+        <div class="selection-slot" [ngClass]="selectedHerosTeam2[0] != null ? 'selected':''">
           <img *ngIf="selectedHerosTeam2[0] != null" [src]="enviroment.imageUrl + selectedHerosTeam2[0].imagen" alt="{{selectedHerosTeam2[0].nombre}}">
         </div>
-        <div class="selection-slot">
+        <div class="selection-slot" [ngClass]="selectedHerosTeam2[1] != null ? 'selected':''">
           <img *ngIf="selectedHerosTeam2[1] != null" [src]="enviroment.imageUrl + selectedHerosTeam2[1].imagen" alt="{{selectedHerosTeam2[1].nombre}}">
         </div>
-        <div class="selection-slot">
+        <div class="selection-slot" [ngClass]="selectedHerosTeam2[2] != null ? 'selected':''">
           <img *ngIf="selectedHerosTeam2[2] != null" [src]="enviroment.imageUrl + selectedHerosTeam2[2].imagen" alt="{{selectedHerosTeam2[2].nombre}}">
         </div>
-        <div class="selection-slot"></div>
         <div class="selection-slot">
+          <div *ngIf="selectedHerosTeam1[2] != null">
+            <div *ngIf="team2Position != null && selectedHerosTeam2[2] != null">
+              {{positions[team2Position]}}
+            </div>
+          </div>
+        </div>
+        <div class="selection-slot" [ngClass]="selectedHerosTeam2[3] != null ? 'selected':''">
           <img *ngIf="selectedHerosTeam2[3] != null" [src]="enviroment.imageUrl + selectedHerosTeam2[3].imagen" alt="{{selectedHerosTeam2[3].nombre}}">
         </div>
       </div>
     </div>
   </div>
 
-  <div class="section-divider"></div>
+  <div class="section-divider" *ngIf="bannedHeroes.length<=0"></div>
 
-  <div class="row justify-content-center my-4" (click)="getBannedHeroes()">
+  <div class="row justify-content-center my-4" (click)="getBannedHeroes()" *ngIf="bannedHeroes.length<=0">
     <div class="col-12 col-md-4 col-lg-3">
       <div class="wheel wheel-red w-100">LA RULETA CANCELADORA</div>
     </div>
@@ -113,7 +128,7 @@
   </div>
 </div>
 
-<div *ngIf="heroWheel" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 z-3" (click)="closeWheel()">
+<div *ngIf="heroWheel && selectedHerosTeam2.length<4" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 z-3" (click)="closeWheel()">
   <div class="position-absolute top-50 start-50 translate-middle bg-white rounded shadow details"
        style="width: 95%; max-width: 100%; height: 95%;"
        (click)="$event.stopPropagation()">

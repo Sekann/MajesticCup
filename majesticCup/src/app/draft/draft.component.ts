@@ -29,14 +29,14 @@ export class DraftComponent {
   selectedHerosTeam2: HeroInterface[] = [];
   remainingHeros: HeroInterface[] = [];
   firstToSelect: Team|null = null;
+  positions: String[] = ["Offlaner","Jungler","Mid Laner","Carry","Support"];
+  team1Position: number | null = null;
+  team2Position: number | null = null;
 
   constructor(private heroComs: HeroComsService, private banningService: BanningWheelService) {
   }
 
-
   revealIndex = 0;
-
-
 
   async getBannedHeroes() {
     await this.banHeroes();
@@ -93,6 +93,11 @@ export class DraftComponent {
     } else {
       this.selectedHerosTeam2.push(hero)
     }
+  }
+
+  selectRandomPos() : void {
+    this.team1Position = Math.floor(Math.random() * 5);
+    this.team2Position = Math.floor(Math.random() * 5);
   }
 
   protected readonly enviroment = enviroment;

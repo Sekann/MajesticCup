@@ -9,7 +9,11 @@
     </div>
   </div>
 
-  <button class="selection-button" (click)="startSelection()" [disabled]="isSelecting">
-    Seleccionar Héroe
-  </button>
+</div>
+
+
+<div  class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 z-3" *ngIf="!isSelecting">
+    <button class="selection-button position-absolute top-50 start-50 translate-middle" (click)="startSelection()" *ngIf="!isSelecting">
+      Seleccionar Héroe
+    </button>
 </div>

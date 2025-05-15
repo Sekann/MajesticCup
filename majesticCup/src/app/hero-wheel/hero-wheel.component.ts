@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {NgForOf, NgClass} from '@angular/common';
+import {NgForOf, NgClass, NgIf} from '@angular/common';
 import {HeroInterface} from '../services/interfaces/hero-interface';
 import {HeroComsService} from '../services/communication/hero-coms.service';
 import {enviroment} from '../../enviroment/enviroment';
@@ -9,7 +9,8 @@ import {enviroment} from '../../enviroment/enviroment';
   standalone: true,
   imports: [
     NgForOf,
-    NgClass
+    NgClass,
+    NgIf
   ],
   templateUrl: './hero-wheel.component.html',
   styleUrl: './hero-wheel.component.scss'
@@ -44,11 +45,9 @@ export class HeroWheelComponent implements OnInit {
 
     const animate = () => {
       this.currentIndex = (this.currentIndex + 1) % this.heroArray.length;
-
       if (this.currentIndex === 0) {
         cycles++;
       }
-
       let delay;
       const cycleProgress = this.currentIndex / this.heroArray.length;
 
@@ -64,9 +63,9 @@ export class HeroWheelComponent implements OnInit {
         setTimeout(animate, delay);
       } else {
           this.selectedIndex = finalIndex;
-          this.isSelecting = false;
           setTimeout(() => {
             this.close.emit(this.heroArray[finalIndex]);
+            this.isSelecting = false;
             this.heroArray.splice(finalIndex, 1);
             this.heroComs.changeRemainingHeroes(this.heroArray);
           }, 1000);

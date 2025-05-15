@@ -5,13 +5,13 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 10px;
   overflow-y: scroll;
 }
 
 .heroes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  justify-content: center;
   gap: 5px;
   width: 100%;
   padding: 10px;
@@ -23,17 +23,16 @@
 }
 
 .hero-card {
+  height: 140px;
   aspect-ratio: 1/1;
   background-color: #f8f9fa;
   border: 3px solid #ccc;
   border-radius: 12px;
-  padding: 5px;
   display: flex;
   overflow: hidden;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  cursor: default;
 
   .hero-content {
     text-align: center;
