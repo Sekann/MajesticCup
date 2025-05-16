@@ -37,7 +37,7 @@
 
     <div *ngFor="let team of teams" class="team-card container mt-4 border border-purple border-1 shadow-lg"
       (click)="goToTeamInfo(team.slug)">
-      <img [src]="'http://localhost:8000/' + (team.imagen ? getCleanImageUrl(team.imagen) : '/images/image.png')"
+      <img [src]="enviroment.imageUrl + (team.imagen ? getCleanImageUrl(team.imagen) : '/images/image.png')"
         alt="Foto equipo" class="team-icon" />
       <div class="team-name text-light fw-semibold fs-5">{{ team.nombre }}</div>
       <div class="team-victories d-flex align-items-center gap-1 fs-5 fw-semibold text-light">

@@ -14,7 +14,7 @@
     <div class="d-flex justify-content-center justify-content-md-end gap-3 w-100 w-md-15">
       <ng-container *ngFor="let red of player.red_social">
         <a [href]="red.link" target="_blank" rel="noopener noreferrer">
-          <img [src]="'http://localhost:8000/' +( red.red_icono ? getCleanImageUrl(red.red_icono) : '/images/image.png')" [alt]="red.red_nombre" class="social-icon" />
+          <img [src]="enviroment.imageUrl +( red.red_icono ? getCleanImageUrl(red.red_icono) : '/images/image.png')" [alt]="red.red_nombre" class="social-icon" />
         </a>
       </ng-container>
     </div>

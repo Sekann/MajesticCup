@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Team } from '../services/interfaces/team';
 import { Router } from '@angular/router';
 import { TeamService } from '../services/team/team.service';
+import { enviroment } from '../../enviroment/enviroment';
 
 @Component({
   selector: 'app-inicio',
@@ -30,4 +31,6 @@ export class InicioComponent implements OnInit {
   getCleanImageUrl(imageUrl: string): string {
   return imageUrl.replace(/_[a-zA-Z0-9]+(?=\.)/, '');
 }
+  protected readonly enviroment = enviroment;
+
 }

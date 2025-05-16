@@ -11,13 +11,13 @@
       <div class="d-flex flex-column gap-1 w-50">
         <div class="d-flex align-items-center gap-2">
           <img
-            [src]="'http://localhost:8000/' + (game.equipo1.imagen ? getCleanImageUrl(game.equipo1.imagen) : '/images/image.png')"
+            [src]="enviroment.imageUrl + (game.equipo1.imagen ? getCleanImageUrl(game.equipo1.imagen) : '/images/image.png')"
             alt="Foto equipo" class="team-icon" />
           <span class="text-light small">{{ game.equipo1.nombre }}</span>
         </div>
         <div class="d-flex align-items-center gap-2">
           <img
-            [src]="'http://localhost:8000/' + (game.equipo2.imagen ? getCleanImageUrl(game.equipo2.imagen) : '/images/image.png')"
+            [src]="enviroment.imageUrl + (game.equipo2.imagen ? getCleanImageUrl(game.equipo2.imagen) : '/images/image.png')"
             alt="Foto equipo" class="team-icon" />
           <span class="text-light small">{{ game.equipo2.nombre }}</span>
         </div>
@@ -45,7 +45,7 @@
 <div class="match-section">
   <div *ngFor="let team of teams" class="team-card container mt-4 border border-purple border-1 shadow-lg"
     (click)="goToTeamInfo(team.slug)">
-    <img [src]="'http://localhost:8000/' + (team.imagen ? getCleanImageUrl(team.imagen) : '/images/image.png')"
+    <img [src]="enviroment.imageUrl + (team.imagen ? getCleanImageUrl(team.imagen) : '/images/image.png')"
       alt="Foto equipo" class="team-icon" />
     <div class="team-name text-light fw-semibold fs-5">{{ team.nombre }}</div>
     <div class="team-victories d-flex align-items-center gap-1 fs-5 fw-semibold text-light">

@@ -4,6 +4,7 @@ import { Team } from '../services/interfaces/team';
 import { Router } from '@angular/router';
 import { TeamService } from '../services/team/team.service';
 import { Game } from '../services/interfaces/game';
+import { enviroment } from '../../enviroment/enviroment';
 
 @Component({
   selector: 'app-estadisticas',
@@ -56,8 +57,10 @@ getWinningTeamImage(game: any): string {
                     : null;
 
   return winningTeam?.imagen
-    ? 'http://localhost:8000' + this.getCleanImageUrl(winningTeam.imagen)
+    ? enviroment.imageUrl + this.getCleanImageUrl(winningTeam.imagen)
     : '/images/image.png';
 }
+  protected readonly enviroment = enviroment;
+
 
 }

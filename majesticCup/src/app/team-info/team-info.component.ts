@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TeamService } from '../services/team/team.service';
 import { Team } from '../services/interfaces/team';
 import { Player } from '../services/interfaces/player';
+import { enviroment } from '../../enviroment/enviroment';
 
 @Component({
   selector: 'app-team-info',
@@ -32,4 +33,6 @@ export class TeamInfoComponent implements OnInit {
   getCleanImageUrl(imageUrl: string): string {
   return imageUrl.replace(/_[a-zA-Z0-9]+(?=\.)/, '');
 }
+  protected readonly enviroment = enviroment;
+
 }
