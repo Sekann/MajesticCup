@@ -2,12 +2,18 @@
   <div class="heroes-grid">
     <div *ngFor="let hero of heroArray; let i = index" class="hero-card" [class.highlighted]="currentIndex === i" [class.selected]="selectedIndex === i">
       <div class="hero-content">
-        <div class="hero-name">{{hero.name}}</div>
+        <div class="hero-image">
+          <img [src]="enviroment.imageUrl + hero.imagen" alt="{{hero.nombre}}">
+        </div>
       </div>
     </div>
   </div>
 
-  <button class="selection-button" (click)="startSelection()" [disabled]="isSelecting">
-    Seleccionar Héroe
-  </button>
+</div>
+
+
+<div  class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 z-3" *ngIf="!isSelecting">
+    <button class="selection-button position-absolute top-50 start-50 translate-middle" (click)="startSelection()" *ngIf="!isSelecting">
+      Seleccionar Héroe
+    </button>
 </div>

@@ -1,13 +1,16 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {NgForOf, NgClass} from '@angular/common';
+import {NgForOf, NgClass, NgIf} from '@angular/common';
 import {HeroInterface} from '../services/interfaces/hero-interface';
+import {HeroComsService} from '../services/communication/hero-coms.service';
+import {enviroment} from '../../enviroment/enviroment';
 
 @Component({
   selector: 'app-hero-wheel',
   standalone: true,
   imports: [
     NgForOf,
-    NgClass
+    NgClass,
+    NgIf
   ],
   templateUrl: './hero-wheel.component.html',
   styleUrl: './hero-wheel.component.scss'
@@ -17,10 +20,17 @@ export class HeroWheelComponent implements OnInit {
   currentIndex: number = -1;
   selectedIndex: number = -1;
   isSelecting: boolean = false;
+
   @Output() close = new EventEmitter<HeroInterface>();
 
+  constructor(private heroComs: HeroComsService) {
+  }
+
   ngOnInit() {
-    this.fillUpHeroArray();
+    this.heroComs.remainingHeroes$.subscribe((heroes) => {
+      this.heroArray = heroes;
+    })
+
   }
 
   startSelection() {
@@ -35,11 +45,9 @@ export class HeroWheelComponent implements OnInit {
 
     const animate = () => {
       this.currentIndex = (this.currentIndex + 1) % this.heroArray.length;
-
       if (this.currentIndex === 0) {
         cycles++;
       }
-
       let delay;
       const cycleProgress = this.currentIndex / this.heroArray.length;
 
@@ -48,31 +56,23 @@ export class HeroWheelComponent implements OnInit {
       } else if (cycles === 1) {
         delay = baseDelay - 50;
       } else {
-        // Último ciclo: ralentización progresiva
         delay = baseDelay + (cycleProgress * 500);
       }
 
-      if (cycles < totalCycles || this.currentIndex < finalIndex) {
+      if (cycles < totalCycles || (cycles === totalCycles && this.currentIndex !== finalIndex)) {
         setTimeout(animate, delay);
       } else {
-        this.selectedIndex = finalIndex;
-        this.isSelecting = false;
-        setTimeout(() => {
-          this.close.emit(this.heroArray[finalIndex]);
-        }, 1000);
+          this.selectedIndex = finalIndex;
+          setTimeout(() => {
+            this.close.emit(this.heroArray[finalIndex]);
+            this.isSelecting = false;
+            this.heroArray.splice(finalIndex, 1);
+            this.heroComs.changeRemainingHeroes(this.heroArray);
+          }, 1000);
       }
     };
-
     animate();
   }
 
-  fillUpHeroArray() {
-    for (let i = 0; i < 28; i++) {
-      this.heroArray.push({
-        slug: "hero" + i,
-        name: "Héroe " + (i + 1),
-        image: ""
-      });
-    }
-  }
+  protected readonly enviroment = enviroment;
 }

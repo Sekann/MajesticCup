@@ -3,6 +3,11 @@ import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {HeroInterface} from '../services/interfaces/hero-interface';
 import {HeroWheelComponent} from '../hero-wheel/hero-wheel.component';
 import {HeroComsService} from '../services/communication/hero-coms.service';
+import {BanningWheelService} from '../services/draft/banning-wheel.service';
+import {Banning} from '../services/interfaces/banning';
+import {enviroment} from '../../enviroment/enviroment';
+import {Team} from '../services/interfaces/team';
+
 
 @Component({
   selector: 'app-draft',
@@ -22,19 +27,23 @@ export class DraftComponent {
   heroWheel: boolean = false;
   selectedHerosTeam1: HeroInterface[] = [];
   selectedHerosTeam2: HeroInterface[] = [];
+  remainingHeros: HeroInterface[] = [];
+  firstToSelect: Team|null = null;
+  positions: String[] = ["Offlaner","Jungler","Mid Laner","Carry","Support"];
+  team1Position: number | null = null;
+  team2Position: number | null = null;
 
-  constructor(private heroComs: HeroComsService) {
+  constructor(private heroComs: HeroComsService, private banningService: BanningWheelService) {
   }
-
 
   revealIndex = 0;
 
-  getBannedHeroes() {
-    this.banHeroes();
+  async getBannedHeroes() {
+    await this.banHeroes();
     this.firstBanned = [];
     this.secondBanned = [];
     this.revealIndex = 0;
-    this.revealNextHero();
+
   }
 
   revealNextHero() {
@@ -51,45 +60,23 @@ export class DraftComponent {
   }
 
   banHeroes() {
-    this.bannedHeroes = [
-    {slug: "ffdfdf",
-      name:"Heroe1",
-      image:"fdjfdfdjfdjf"},
-      {slug: "ffdfdf",
-        name:"Heroe2",
-        image:"fdjfdfdjfdjf"},
-      {slug: "ffdfdf",
-        name:"Heroe3",
-        image:"fdjfdfdjfdjf"},
-      {slug: "ffdfdf",
-        name:"Heroe4",
-        image:"fdjfdfdjfdjf"},
-      {slug: "ffdfdf",
-        name:"Heroe5",
-        image:"fdjfdfdjfdjf"},
-      {slug: "ffdfdf",
-        name:"Heroe6",
-        image:"fdjfdfdjfdjf"},
-      {slug: "ffdfdf",
-        name:"Heroe7",
-        image:"fdjfdfdjfdjf"},
-      {slug: "ffdfdf",
-        name:"Heroe8",
-        image:"fdjfdfdjfdjf"},
-      {slug: "ffdfdf",
-        name:"Heroe9",
-        image:"fdjfdfdjfdjf"},
-      {slug: "ffdfdf",
-        name:"Heroe10",
-        image:"fdjfdfdjfdjf"},]
+    this.banningService.banHeros("QQf_AnpR2sVlPAsMNUWKZQ").subscribe({
+      next: (data: Banning) => {
+        console.log(data);
+        this.bannedHeroes = data.personajes_baneados as HeroInterface[];
+        this.remainingHeros = data.personajes_restantes as HeroInterface[];
+        this.firstToSelect = data.primer_equipo_elegir;
+        this.revealNextHero();
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    })
 
-    for (let i = 0; i < 5; i++) {
-      this.firstBanned[i] = this.bannedHeroes[i];
-      this.secondBanned[i] = this.bannedHeroes[i+5];
-    }
   }
 
   openWheel(): void {
+    this.heroComs.changeRemainingHeroes(this.remainingHeros);
     this.heroWheel = true;
   }
 
@@ -107,4 +94,11 @@ export class DraftComponent {
       this.selectedHerosTeam2.push(hero)
     }
   }
+
+  selectRandomPos() : void {
+    this.team1Position = Math.floor(Math.random() * 5);
+    this.team2Position = Math.floor(Math.random() * 5);
+  }
+
+  protected readonly enviroment = enviroment;
 }

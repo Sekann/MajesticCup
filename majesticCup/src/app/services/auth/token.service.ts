@@ -11,13 +11,8 @@ export class TokenService {
 
   constructor(private cookieService:CookieService) { }
 
-  savetokens(accessToken: string, refreshToken: string) {
+  savetokens(accessToken: string) {
     this.cookieService.set(this.ACCESS_TOKEN_KEY, accessToken, {
-      path:"/",
-      secure: enviroment.tokenSecure,
-      sameSite: 'Strict',
-    });
-    this.cookieService.set(this.REFRESH_TOKEN_KEY, refreshToken, {
       path:"/",
       secure: enviroment.tokenSecure,
       sameSite: 'Strict',
